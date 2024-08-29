@@ -37,9 +37,11 @@ After port-forwarding as `kubectl port-forward service/demo --address=0.0.0.0 80
 
 ### Make a Load Test
 To observe up-scaling, continuously flood your cluster with requests. 
-```shell
-kubectl run --rm -i busybox --restart Never --image=radial/busyboxplus -- sh -c "for i in \$(seq 1 100); do curl http://demo.default:8000/login -F username=demo -F password=demo; done"
-```
+> windows command prompt:
+>> `kubectl run --rm -i busybox --restart Never --image=radial/busyboxplus -- sh -c "for i in $(seq 1 100); do curl http://demo.default:8000/login -F username=demo -F password=demo; done"`
+
+> bash:
+>> `kubectl run --rm -i busybox --restart Never --image=radial/busyboxplus -- sh -c "for i in \$(seq 1 100); do curl http://demo.default:8000/login -F username=demo -F password=demo; done"`
 
 I just made up metrics query to be like rate in the last 1 minute and multipled it by 10 just to make easy to get scaled. You can play with the query as you wish.
 
